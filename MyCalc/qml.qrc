@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>Console.qml</file>
+        <file>ConsoleDelegate.qml</file>
+        <file>Calculator.qml</file>
+        <file>CalculatorButton.qml</file>
+    </qresource>
+</RCC>
