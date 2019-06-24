@@ -4,6 +4,7 @@ import QtQuick.Controls 2.2
 import QtQuick.Controls.Material 2.2
 import QtGraphicalEffects 1.0
 import com.CalculatorCore 1.0
+import com.Settings 1.0
 
 Window {
     id: window
@@ -13,6 +14,19 @@ Window {
     height: 550
     minimumHeight: 550
     title: qsTr("STC test task")
+    onWidthChanged: appSizeSave();
+    onHeightChanged: appSizeSave();
+    function appSizeSave(){
+        settings.write(width, height);
+    }
+    Component.onCompleted: settings.read();
+    Connections{
+        target: settings
+            onSignalResize:{
+                window.width = width;
+                window.height = height;
+        }
+    }
 
     Material.theme: Material.Dark
     Material.background: Material.color(Material.Grey, Material.Shade900);
@@ -21,6 +35,10 @@ Window {
     Material.foreground: Material.color(Material.Grey, Material.Shade50);
     property color operatorButtonColor: Material.accent
     property color numberButtonColor: Material.color(Material.Grey, Material.Shade300)
+    property color itemBackground:Material.primary
+    property color requestColor: Material.color(Material.Green, Material.ShadeA400)
+    property color resultColor: Material.color(Material.LightBlue, Material.Shade500)
+    property color errorColor: Material.color(Material.Red, Material.Shade500)
 
     Item {
         id: consoleItem
@@ -107,15 +125,6 @@ Window {
             anchors.bottomMargin: 0
 
             Dial {
-                //                id: calcHold
-                //                y: 380
-                //                width: calcParamItem.height/3
-                //                height: width
-                //                to: 30
-                //                stepSize: 1
-                //                anchors.left: parent.left
-                //                anchors.leftMargin: (calcParamItem.height - height)/4
-                //                anchors.verticalCenter: parent.verticalCenter
                 id: calcHold
                 y: 380
                 width: 60
@@ -277,8 +286,6 @@ Window {
                     }
                     clip: false
                 }
-
-
             }
         }
     }
@@ -297,6 +304,10 @@ Window {
         onSignalSendMsgToBackPanel:{
             _console.addItem(msgType, msg, duration);
         }
+    }
+
+    Settings{
+        id:settings
     }
 }
 

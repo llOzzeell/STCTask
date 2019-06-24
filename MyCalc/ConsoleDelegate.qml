@@ -19,12 +19,6 @@ Item {
     }
 
     property string messageString:"---"
-    property int duration:-1
-
-    property color itemBackground:Material.primary
-    property color requestColor: Material.color(Material.Green, Material.ShadeA400)
-    property color resultColor: Material.color(Material.LightBlue, Material.Shade500)
-    property color errorColor: Material.color(Material.Red, Material.Shade500)
 
     Pane {
         id: pane

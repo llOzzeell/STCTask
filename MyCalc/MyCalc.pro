@@ -17,7 +17,8 @@ SOURCES += \
         main.cpp \
     core.cpp \
     taskobject.cpp \
-    taskqueue.cpp
+    taskqueue.cpp \
+    settings.cpp
 
 RESOURCES += qml.qrc
 
@@ -39,7 +40,8 @@ HEADERS += \
     taskqueue.h \
     threadprocessing.h \
     threadprepare.h \
-    resultconsole.h
+    resultconsole.h \
+    settings.h
 
 DISTFILES +=
 

@@ -20,7 +20,6 @@ Item {
         ConsoleDelegate{
             messageType: msgType
             messageString: msgString
-            duration: durTime
             width:listView.width
         }
     }
